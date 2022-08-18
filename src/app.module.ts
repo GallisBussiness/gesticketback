@@ -8,8 +8,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AuthMiddleware } from './auth/auth.middleware';
 import { DecadaireModule } from './decadaire/decadaire.module';
 import { FicheModule } from './fiche/fiche.module';
@@ -32,7 +30,7 @@ import { UserModule } from './user/user.module';
       useFactory: async (config: ConfigService) => {
         return {
           secret: config.get('JWT_SECRET'),
-          signOptions: { expiresIn: 86400 },
+          signOptions: { expiresIn: '24h' },
         };
       },
       inject: [ConfigService],
@@ -43,8 +41,8 @@ import { UserModule } from './user/user.module';
     TicketModule,
     UserModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
