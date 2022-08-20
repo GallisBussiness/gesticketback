@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Exclude } from 'class-transformer';
 import { Document } from 'mongoose';
 
 export enum USER_ROLE {
@@ -22,6 +23,7 @@ export class User {
   nom: string;
 
   @Prop({ type: String, required: true })
+  @Exclude()
   password: string;
 
   @Prop({ type: String })
