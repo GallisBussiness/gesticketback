@@ -37,6 +37,13 @@ export class DecadaireController {
 
   @CheckAbility({ action: Action.Read, subject: Decadaire })
   @UseGuards(AuthGuard('jwt'), CaslGuard)
+  @Get('ouvert')
+  findAllOpen() {
+    return this.decadaireService.findAllOpen();
+  }
+
+  @CheckAbility({ action: Action.Read, subject: Decadaire })
+  @UseGuards(AuthGuard('jwt'), CaslGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.decadaireService.findOne(id);

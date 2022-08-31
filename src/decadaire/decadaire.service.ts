@@ -2,7 +2,10 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { add, parseISO } from 'date-fns';
 import { Model } from 'mongoose';
-import { CreateDecadaireDto } from './dto/create-decadaire.dto';
+import {
+  CreateDecadaireDto,
+  STATE_DECADAIRE,
+} from './dto/create-decadaire.dto';
 import { UpdateDecadaireDto } from './dto/update-decadaire.dto';
 import { Decadaire, DecadaireDocument } from './entities/decadaire.entity';
 
@@ -27,6 +30,14 @@ export class DecadaireService {
   async findAll(): Promise<Decadaire[]> {
     try {
       return await this.decadaireModel.find();
+    } catch (error) {
+      throw new HttpException(error.message, 500);
+    }
+  }
+
+  async findAllOpen(): Promise<Decadaire[]> {
+    try {
+      return await this.decadaireModel.find({ etat: STATE_DECADAIRE.OUVERT });
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
