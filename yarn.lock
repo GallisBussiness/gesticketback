@@ -3766,6 +3766,11 @@ mongodb@4.8.1:
   optionalDependencies:
     saslprep "^1.0.3"
 
+mongoose-serial@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/mongoose-serial/-/mongoose-serial-1.0.4.tgz#5676716573ceb261c8d80d4fb8399fa3dd045e75"
+  integrity sha512-5wJnLPEiBzE5qFJ2vcPebpSxNpFIRegeu02A1h+B/qzVfqwtJ0J046ls0oF8FjFHuchgGb+b9atiGwPZ+uDKFQ==
+
 mongoose@^6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.5.2.tgz#630ae67c4d2576635ba1f859b2840560b27b7775"

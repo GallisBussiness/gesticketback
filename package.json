@@ -36,6 +36,7 @@
     "date-fns": "^2.29.1",
     "helmet": "^5.1.1",
     "mongoose": "^6.5.2",
+    "mongoose-serial": "^1.0.4",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

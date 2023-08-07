@@ -6,8 +6,6 @@ export enum STATE_DECADAIRE {
 }
 
 export class CreateDecadaireDto {
-  @IsString()
-  nom: string;
 
   @IsString()
   debut: string;

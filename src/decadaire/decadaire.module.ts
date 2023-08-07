@@ -7,8 +7,12 @@ import { CaslModule } from 'src/casl/casl.module';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-      { name: Decadaire.name, schema: DecadaireSchema },
+    MongooseModule.forFeatureAsync([
+      { name: Decadaire.name, useFactory:() => {
+        const schema = DecadaireSchema;
+        schema.plugin(require("mongoose-serial"),{field:"nom", prefix: "DECAD",separator:"-"})
+        return schema;
+      } },
     ]),
     CaslModule,
   ],
