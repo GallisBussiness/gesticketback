@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
+import { Document, Types,Date } from 'mongoose';
 import { Decadaire } from 'src/decadaire/entities/decadaire.entity';
 import { Ticket } from 'src/ticket/entities/ticket.entity';
 import { User } from 'src/user/entities/user.entity';

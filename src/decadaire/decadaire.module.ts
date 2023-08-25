@@ -18,5 +18,6 @@ import { CaslModule } from 'src/casl/casl.module';
   ],
   controllers: [DecadaireController],
   providers: [DecadaireService],
+  exports:[DecadaireService]
 })
 export class DecadaireModule {}

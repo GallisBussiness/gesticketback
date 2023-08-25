@@ -1,7 +1,7 @@
-import { IsMongoId, IsNumber, IsString } from 'class-validator';
+import { IsDate, IsDateString, IsMongoId, IsNumber, IsString } from 'class-validator';
 
 export class CreateFicheDto {
-  @IsString()
+  @IsDateString()
   date: string;
 
   @IsNumber()
