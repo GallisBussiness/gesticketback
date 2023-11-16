@@ -13,6 +13,7 @@ import { DecadaireModule } from './decadaire/decadaire.module';
 import { FicheModule } from './fiche/fiche.module';
 import { TicketModule } from './ticket/ticket.module';
 import { UserModule } from './user/user.module';
+import { ProductionModule } from './production/production.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { UserModule } from './user/user.module';
     FicheModule,
     TicketModule,
     UserModule,
+    ProductionModule,
   ],
   controllers: [],
   providers: [],

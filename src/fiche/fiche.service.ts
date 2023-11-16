@@ -35,7 +35,7 @@ export class FicheService {
     try {
       return await this.ficheModel
         .find({ user: id })
-        .populate(['decadaire', 'ticket', 'user']);
+        .populate(['decadaire', 'ticket']);
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
@@ -45,7 +45,7 @@ export class FicheService {
     try {
       return await this.ficheModel
         .find({ decadaire: id })
-        .populate(['decadaire', 'ticket', 'user']);
+        .populate(['decadaire', 'ticket']);
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
@@ -55,7 +55,7 @@ export class FicheService {
     try {
       return await this.ficheModel
         .find({ ticket: id })
-        .populate(['decadaire', 'ticket', 'user']);
+        .populate(['decadaire', 'ticket']);
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
@@ -65,7 +65,7 @@ export class FicheService {
     try {
       return await this.ficheModel
         .find({ user: id })
-        .populate(['decadaire', 'ticket', 'user']);
+        .populate(['decadaire', 'ticket']);
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
@@ -80,7 +80,7 @@ export class FicheService {
         .find({
           $and: [{ ticket: dto.ticket }, { decadaire: dto.decadaire }],
         })
-        .populate(['decadaire', 'ticket', 'user']);
+        .populate(['decadaire', 'ticket']);
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
@@ -90,7 +90,7 @@ export class FicheService {
     try {
       return await this.ficheModel
         .findById(id)
-        .populate(['decadaire', 'ticket', 'user']);
+        .populate(['decadaire', 'ticket']);
     } catch (error) {
       throw new HttpException(error.message, 500);
     }

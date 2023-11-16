@@ -54,6 +54,11 @@ export class UserController {
     return this.userService.findOne(id);
   }
 
+  @Patch('updatepassword/:id')
+  updatePassword(@Param('id') id: string, @Body() updatePassDto: {oldPass:string,newPass: string}) {
+    return this.userService.updatePassword(id, updatePassDto);
+  }
+
   @CheckAbility({ action: Action.Update, subject: User })
   @UseGuards(AuthGuard('jwt'), CaslGuard)
   @Patch(':id')

@@ -7,7 +7,7 @@ export type DecadaireDocument = Decadaire & Document;
 @Schema({ timestamps: true })
 export class Decadaire {
   @Prop({ type: String, unique: true })
-  nom: string;
+  nom: string;  
 
   @Prop({ type: String, required: true, unique: true })
   debut: string;

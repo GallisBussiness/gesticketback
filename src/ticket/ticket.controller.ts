@@ -21,12 +21,12 @@ import { AuthGuard } from '@nestjs/passport';
 export class TicketController {
   constructor(private readonly ticketService: TicketService) {}
 
-  @CheckAbility({ action: Action.Create, subject: Ticket })
-  @UseGuards(AuthGuard('jwt'), CaslGuard)
-  @Post()
-  create(@Body() createTicketDto: CreateTicketDto) {
-    return this.ticketService.create(createTicketDto);
-  }
+  // @CheckAbility({ action: Action.Create, subject: Ticket })
+  // @UseGuards(AuthGuard('jwt'), CaslGuard)
+  // @Post()
+  // create(@Body() createTicketDto: CreateTicketDto) {
+  //   return this.ticketService.create(createTicketDto);
+  // }
 
   @CheckAbility({ action: Action.Read, subject: Ticket })
   @UseGuards(AuthGuard('jwt'), CaslGuard)
@@ -42,17 +42,17 @@ export class TicketController {
     return this.ticketService.findOne(id);
   }
 
-  @CheckAbility({ action: Action.Update, subject: Ticket })
-  @UseGuards(AuthGuard('jwt'), CaslGuard)
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto) {
-    return this.ticketService.update(id, updateTicketDto);
-  }
+  // @CheckAbility({ action: Action.Update, subject: Ticket })
+  // @UseGuards(AuthGuard('jwt'), CaslGuard)
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto) {
+  //   return this.ticketService.update(id, updateTicketDto);
+  // }
 
-  @CheckAbility({ action: Action.Delete, subject: Ticket })
-  @UseGuards(AuthGuard('jwt'), CaslGuard)
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.ticketService.remove(id);
-  }
+  // @CheckAbility({ action: Action.Delete, subject: Ticket })
+  // @UseGuards(AuthGuard('jwt'), CaslGuard)
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.ticketService.remove(id);
+  // }
 }
