@@ -17,6 +17,11 @@ export class ProductionController {
     return this.productionService.findAll();
   }
 
+  @Get('bydecad/:decad')
+  findByDecad(@Param('decad') decad: string) {
+    return this.productionService.findByDecad(decad);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productionService.findOne(id);

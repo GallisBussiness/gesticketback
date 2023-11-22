@@ -12,12 +12,14 @@ export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
+    try{
     const createUser = await hashFromRequest(createUserDto);
     const createdUser = new this.userModel(createUser);
     return await createdUser.save();
   } catch (error) {
     throw new HttpException(error.message, 500);
   }
+}
   
 
   async findAll(): Promise<User[]> {
@@ -36,14 +38,14 @@ export class UserService {
     }
   }
 
-  async updatePassword(id: string, updateUserDto: {oldPass: string,newPass: string}): Promise<User> {
+  async updatePassword(id: string, updateUserDto: {oldpass: string,newpass: string}): Promise<User> {
     try {
       let user = await this.userModel.findById(id);
-      if (user !== null) {
-        const isMatch = await bcrypt.compare(updateUserDto.oldPass, user.password);
+      if (user) {
+        const isMatch = await bcrypt.compare(updateUserDto.oldpass, user.password);
         if (isMatch) {
           const salt = await bcrypt.genSalt(10);
-          const passwordHashed = await bcrypt.hash(updateUserDto.newPass, salt);
+          const passwordHashed = await bcrypt.hash(updateUserDto.newpass, salt);
           return await this.userModel.findByIdAndUpdate(id,{password: passwordHashed});
         }
         else {

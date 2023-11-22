@@ -3,7 +3,8 @@ import { Exclude } from 'class-transformer';
 import { Document } from 'mongoose';
 
 export enum USER_ROLE {
-  USER = 'user',
+  BOULANGER = 'boulanger',
+  RESTAURATEUR = 'restaurateur',
   ADMIN = 'admin',
 }
 
@@ -29,7 +30,7 @@ export class User {
   @Prop({ type: String })
   resetPasswordToken: string;
 
-  @Prop({ type: String, default: USER_ROLE.USER })
+  @Prop({ type: String, default: USER_ROLE.ADMIN })
   role: string;
 }
 
