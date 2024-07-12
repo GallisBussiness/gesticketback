@@ -25,7 +25,7 @@ export class FicheService {
     try {
       return await this.ficheModel
         .find()
-        .populate(['decadaire', 'ticket', 'user']);
+        .populate(['decadaire', 'ticket']).sort({ createdAt: -1 });
     } catch (error) {
       throw new HttpException(error.message, 500);
     }

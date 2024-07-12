@@ -9,8 +9,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { TicketService } from './ticket.service';
-import { CreateTicketDto } from './dto/create-ticket.dto';
-import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { CheckAbility } from 'src/casl/policy.decorator';
 import { Action } from 'src/casl/casl-ability.factory';
 import { Ticket } from './entities/ticket.entity';

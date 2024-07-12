@@ -16,14 +16,13 @@ import { Action } from 'src/casl/casl-ability.factory';
 import { Fiche } from './entities/fiche.entity';
 import { CaslGuard } from 'src/casl/casl.guard';
 import { AuthGuard } from '@nestjs/passport';
-import { USER_ROLE } from 'src/user/entities/user.entity';
-import { find, groupBy, keys} from 'lodash'; 
-import { DecadaireService } from 'src/decadaire/decadaire.service';
-import { addDays, compareAsc, getDate, parseISO } from 'date-fns';
+import { groupBy, keys} from 'lodash'; 
+
+
 
 @Controller('fiche')
 export class FicheController {
-  constructor(private readonly ficheService: FicheService, private readonly decadaireService: DecadaireService) {}
+  constructor(private readonly ficheService: FicheService) {}
 
   @CheckAbility({ action: Action.Create, subject: Fiche })
   @UseGuards(AuthGuard('jwt'), CaslGuard)
@@ -34,19 +33,14 @@ export class FicheController {
 
   @CheckAbility({ action: Action.Read, subject: Fiche })
   @UseGuards(AuthGuard('jwt'), CaslGuard)
-  @Get('byrole/:role/:id')
-  findAll(@Param('role') role: string, @Param('id') id: string) {
-    if (role === USER_ROLE.ADMIN) {
-      return this.ficheService.findAll();
-    }
-    return this.ficheService.findAllByUser(id);
+  @Get('')
+  findAll() {
+    return this.ficheService.findAll();
   }
 
-  // @CheckAbility({ action: Action.Read, subject: Fiche })
-  // @UseGuards(AuthGuard('jwt'), CaslGuard)
+  @UseGuards(AuthGuard('jwt'))
   @Get('findfichebydecadaire/:id')
   async findAllFicheByDecadaire(@Param('id') id: string) {
-    const decad = await this.decadaireService.findOne(id);
     const fiches = await this.ficheService.findAllFicheByDecadaire(id);
     const groupedByDate = groupBy(fiches, v => v.date);
     const groupedByTicket = groupBy(fiches, v => v.ticket.nom);

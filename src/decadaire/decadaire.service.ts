@@ -18,9 +18,9 @@ export class DecadaireService {
   async create(createDecadaireDto: CreateDecadaireDto): Promise<Decadaire> {
     try {
       const createdDecadaire = new this.decadaireModel(createDecadaireDto);
-      createdDecadaire.fin = add(parseISO(createdDecadaire.debut), {
+      createdDecadaire.fin = add(new Date(createdDecadaire.debut), {
         days: 10,
-      }).toISOString();
+      });
       return await createdDecadaire.save();
     } catch (error) {
       throw new HttpException(error.message, 500);
@@ -29,7 +29,7 @@ export class DecadaireService {
 
   async findAll(): Promise<Decadaire[]> {
     try {
-      return await this.decadaireModel.find();
+      return await this.decadaireModel.find().sort({createdAt: -1});
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
@@ -56,13 +56,16 @@ export class DecadaireService {
     updateDecadaireDto: UpdateDecadaireDto,
   ): Promise<Decadaire> {
     try {
-      const fin = add(parseISO(updateDecadaireDto.debut), {
+      if(updateDecadaireDto.debut){
+        const fin = add(parseISO(updateDecadaireDto.debut), {
         days: 10,
       }).toISOString();
       return await this.decadaireModel.findByIdAndUpdate(id, {
         ...updateDecadaireDto,
         fin,
       });
+      }
+      return await this.decadaireModel.findByIdAndUpdate(id,updateDecadaireDto);
     } catch (error) {
       throw new HttpException(error.message, 500);
     }

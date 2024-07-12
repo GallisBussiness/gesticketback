@@ -11,6 +11,6 @@ export class CreateDecadaireDto {
   debut: string;
 
   @IsOptional()
-  @IsEnum(STATE_DECADAIRE, { each: true })
+  @IsEnum(STATE_DECADAIRE)
   etat: string;
 }

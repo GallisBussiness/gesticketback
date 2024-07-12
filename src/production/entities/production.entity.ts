@@ -28,4 +28,4 @@ soir: object;
 decadaire: Decadaire | string;
 }
 
-export const ProductionSchema = SchemaFactory.createForClass(Production);
+export const ProductionSchema = SchemaFactory.createForClass(Production).index({date: 1, decadaire: 1}, {unique: true});

@@ -1,8 +1,8 @@
-import { IsDate, IsDateString, IsMongoId, IsNumber, IsString } from 'class-validator';
+import { IsMongoId, IsNumber, IsString} from 'class-validator';
 
 export class CreateFicheDto {
-  @IsDateString()
-  date: string;
+  @IsString()
+  date: Date;
 
   @IsNumber()
   nombre: number;
@@ -13,6 +13,4 @@ export class CreateFicheDto {
   @IsMongoId()
   ticket: string;
 
-  @IsMongoId()
-  user: string;
 }

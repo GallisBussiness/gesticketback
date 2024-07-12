@@ -4,6 +4,7 @@ import { Document } from 'mongoose';
 
 export enum USER_ROLE {
   BOULANGER = 'boulanger',
+  Hq = 'hq',
   RESTAURATEUR = 'restaurateur',
   ADMIN = 'admin',
 }

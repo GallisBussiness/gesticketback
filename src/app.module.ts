@@ -14,6 +14,10 @@ import { FicheModule } from './fiche/fiche.module';
 import { TicketModule } from './ticket/ticket.module';
 import { UserModule } from './user/user.module';
 import { ProductionModule } from './production/production.module';
+import { CantineModule } from './cantine/cantine.module';
+import { PaymentCantineModule } from './payment-cantine/payment-cantine.module';
+import { AttributionModule } from './attribution/attribution.module';
+import { HyqualiteModule } from './hyqualite/hyqualite.module';
 
 @Module({
   imports: [
@@ -42,6 +46,10 @@ import { ProductionModule } from './production/production.module';
     TicketModule,
     UserModule,
     ProductionModule,
+    CantineModule,
+    PaymentCantineModule,
+    AttributionModule,
+    HyqualiteModule,
   ],
   controllers: [],
   providers: [],

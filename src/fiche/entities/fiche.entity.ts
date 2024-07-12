@@ -6,22 +6,19 @@ import { User } from 'src/user/entities/user.entity';
 
 export type FicheDocument = Fiche & Document;
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: true})
 export class Fiche {
-  @Prop({ type: String, required: true })
-  date: string;
+  @Prop({ type: Date, required: true })
+  date: Date;
 
   @Prop({ type: Number, required: true })
   nombre: number;
 
-  @Prop({ type: Types.ObjectId, ref: Ticket.name })
+  @Prop({ type: Types.ObjectId, ref: Ticket.name,required: true })
   ticket: Ticket;
 
-  @Prop({ type: Types.ObjectId, ref: Decadaire.name })
+  @Prop({ type: Types.ObjectId, ref: Decadaire.name,required: true,autopopulate: true })
   decadaire: Decadaire;
-
-  @Prop({ type: Types.ObjectId, ref: User.name })
-  user: string;
 }
 
-export const FicheSchema = SchemaFactory.createForClass(Fiche);
+export const FicheSchema = SchemaFactory.createForClass(Fiche).index({date: 1, decadaire: 1,ticket:1}, {unique: true});

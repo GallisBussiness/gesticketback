@@ -32,7 +32,7 @@ export class UserService {
 
   async findOne(id: string): Promise<User> {
     try {
-      return await this.userModel.findById(id);
+      return await this.userModel.findById(id,{password: 0});
     } catch (error) {
       throw new HttpException(error.message, 500);
     }

@@ -49,8 +49,7 @@ export class DecadaireController {
     return this.decadaireService.findOne(id);
   }
 
-  @CheckAbility({ action: Action.Update, subject: Decadaire })
-  @UseGuards(AuthGuard('jwt'), CaslGuard)
+  @UseGuards(AuthGuard('jwt'))
   @Patch(':id')
   update(
     @Param('id') id: string,
